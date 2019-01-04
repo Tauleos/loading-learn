@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+    <head>
+        <style>
+            .spinner{
+                margin: 100px auto;
+                width: 50px;
+                height: 60px;
+                text-align: center;
+                font-size: 10px;
+            }
+            .spinner .rect{
+                display: inline-block;
+                width: 6px;
+                height: 100%;
+                background-color: #1b85ff;
+                animation: animations 1s infinite ease-in-out;
+            
+            }
+            .spinner .rect:nth-child(2){
+                animation-delay: -.9s;
+            }
+            .spinner .rect:nth-child(3){
+                animation-delay: -.8s;
+            }
+            .spinner .rect:nth-child(4){
+                animation-delay: -.7s;
+            }
+            .spinner .rect:nth-child(5){
+                animation-delay: -.6s;
+            }
+            @keyframes animations{
+                0%,40%,100%{
+                    transform: scaleY(0.4);
+                }
+                20%{
+                    transform: scaleY(1.0);
+                }
+            }
+            p{
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="spinner">
+            <div class="rect"></div>
+            <div class="rect"></div>
+            <div class="rect"></div>
+            <div class="rect"></div>
+            <div class="rect"></div>
+        </div>
+        <p> animation-delay 为正数表示该动画在此刻暂停，延时该时间后执行</p>
+        <p> animation-delay 为0表示该动画立即执行</p>
+        <p> animation-delay 为负数表示该动画立即执行，但是会出现在已运动了该数值时间之后的位置</p>
+    </body>
+
+</html>
