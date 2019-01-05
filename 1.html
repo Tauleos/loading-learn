@@ -1,58 +1,236 @@
 <!doctype html>
 <html>
-    <head>
-        <style>
-            .spinner{
-                margin: 100px auto;
-                width: 50px;
-                height: 60px;
-                text-align: center;
-                font-size: 10px;
+
+<head>
+    <style>
+        body > div {
+            margin: 100px auto;
+        }
+        /** section-1 */
+        .spinner {
+            width: 50px;
+            height: 60px;
+            text-align: center;
+            font-size: 10px;
+        }
+
+        .spinner .rect {
+            display: inline-block;
+            width: 6px;
+            height: 100%;
+            background-color: #1b85ff;
+            animation: animations 1s infinite ease-in-out;
+
+        }
+
+        .spinner .rect:nth-child(2) {
+            animation-delay: -.9s;
+        }
+
+        .spinner .rect:nth-child(3) {
+            animation-delay: -.8s;
+        }
+
+        .spinner .rect:nth-child(4) {
+            animation-delay: -.7s;
+        }
+
+        .spinner .rect:nth-child(5) {
+            animation-delay: -.6s;
+        }
+
+        @keyframes animations {
+
+            0%,
+            40%,
+            100% {
+                transform: scaleY(0.4);
             }
-            .spinner .rect{
-                display: inline-block;
-                width: 6px;
-                height: 100%;
-                background-color: #1b85ff;
-                animation: animations 1s infinite ease-in-out;
-            
+
+            20% {
+                transform: scaleY(1.0);
             }
-            .spinner .rect:nth-child(2){
-                animation-delay: -.9s;
+        }
+
+        /** section-2 */
+        .spinner2 {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            background-color: #1b85ff;
+            animation: cube 1s infinite;
+        }
+
+        @keyframes cube {
+            0% {
+                transform: perspective(50px) rotate(0, 0);
             }
-            .spinner .rect:nth-child(3){
-                animation-delay: -.8s;
+
+            50% {
+                transform: perspective(100px) rotateX(180deg);
             }
-            .spinner .rect:nth-child(4){
-                animation-delay: -.7s;
+
+            100% {
+                transform: perspective(50px) rotateX(180deg) rotateY(180deg);
             }
-            .spinner .rect:nth-child(5){
-                animation-delay: -.6s;
+        }
+
+        /** section-3 */
+        .spinner3 {
+            position: relative;
+            width: 100px;
+            height: 100px;
+        }
+
+        .spinner3 .dot {
+            margin: auto;
+            width: inherit;
+            height: inherit;
+            background-color: red;
+            opacity: .6;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            animation: dot 2s ease-in-out infinite;
+        }
+
+        .spinner3::after {
+            content: '';
+            display: table;
+            clear: both;
+        }
+
+        .spinner3 .dot:last-child {
+            animation-delay: -1s;
+        }
+
+        @keyframes dot {
+            0%,
+            100% {
+                transform: scale(0.3);
             }
-            @keyframes animations{
-                0%,40%,100%{
-                    transform: scaleY(0.4);
-                }
-                20%{
-                    transform: scaleY(1.0);
-                }
+
+            50% {
+                transform: scale(1.0);
             }
-            p{
-                text-align: center;
+        }
+        /** section-4 */
+        .spinner4{
+            position: relative;
+            width: 100px;
+            height: 100px;
+        }
+        .spinner4 .cube{
+            position: absolute;
+            top: 0;
+            width: 50px;
+            height: 50px;
+            background-color: aquamarine;
+            animation: twocube 2s infinite ease-in-out;
+        }
+        .spinner4 .cube:last-child{
+            animation-delay: -1s;
+        }
+        @keyframes twocube{
+            0%{
+                transform: scale(1);
             }
-        </style>
-    </head>
-    <body>
-        <div class="spinner">
-            <div class="rect"></div>
-            <div class="rect"></div>
-            <div class="rect"></div>
-            <div class="rect"></div>
-            <div class="rect"></div>
-        </div>
-        <p> animation-delay 为正数表示该动画在此刻暂停，延时该时间后执行</p>
-        <p> animation-delay 为0表示该动画立即执行</p>
-        <p> animation-delay 为负数表示该动画立即执行，但是会出现在已运动了该数值时间之后的位置</p>
-    </body>
+            25%{
+                transform: translateX(100px) scale(0.6) rotateZ(-90deg) 
+            }
+            50%{
+                transform: translate(100px,100px) scale(1) rotateZ(-180deg)
+            }
+            75%{
+                transform: translate(0,100px) scale(0.6) rotate(-270deg)
+            }
+            100%{
+                transform: scale(1) rotate(-360deg)
+            }
+        }
+        /** section-5*/
+        .spinner5{
+            display: flex;
+            justify-content: center;
+        }
+        .spinner5 .dot{
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 5px;
+            background-color: saddlebrown;
+            animation: dotloading 1.2s ease-in-out infinite;
+        }
+        .spinner5 .dot:nth-child(1){
+            animation-delay: -1.1s;
+        }
+        .spinner5 .dot:nth-child(2){
+            animation-delay: -1.0s;
+        }
+        .spinner5 .dot:nth-child(3){
+            animation-delay: -0.9s;
+        }
+        .spinner5 .dot:nth-child(4){
+            animation-delay: -.8s;
+        }
+        .spinner5 .dot:nth-child(5){
+            animation-delay: -.7s;
+        }
+        @keyframes dotloading {
+            0%,100%{
+                transform: scale(0.3);
+                opacity:.3;
+            }
+            50%{
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="spinner">
+        <div class="rect"></div>
+        <div class="rect"></div>
+        <div class="rect"></div>
+        <div class="rect"></div>
+        <div class="rect"></div>
+    </div>
+    <div class="spinner3">
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+    <div class="spinner4">
+        <div class="cube"></div>
+        <div class="cube"></div>
+
+    </div>
+    <div class="spinner5">
+        <div class=dot></div>
+        <div class=dot></div>
+        <div class=dot></div>
+        <div class=dot></div>
+        <div class=dot></div>
+    </div>
+    <h1>animation-delay</h1>
+    <ul>
+        <li>
+            为正数表示该动画在此刻暂停，延时该时间后执行
+        </li>
+        <li>为0表示该动画立即执行</li>
+        <li>为负数表示该动画立即执行，但是会出现在已运动了该数值时间之后的位置</li>
+    </ul>
+    <div class="spinner2"></div>
+    <h1>perspective</h1>
+    <ul>
+        <li>perspective 代表的是透视距离</li>
+        <li>perspective属性有两种书写形式，一种用在舞台元素上（动画元素们的共同父辈元素）；第二种就是用在当前动画元素上，与transform的其他属性写在一起</li>
+        <li>二者的差异见<a href="https://www.zhangxinxu.com/study/201209/transform-perspective-same-rotate.html" target="_blank">demo</a></li>
+    </ul>
+
+
+
+</body>
 
 </html>
